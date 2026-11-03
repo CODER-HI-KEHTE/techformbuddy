@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
     'localhost:3000',
     '127.0.0.1:3000',
   ],
+  serverExternalPackages: ['better-sqlite3'],
 };
 
 export default nextConfig;
