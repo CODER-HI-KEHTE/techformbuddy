@@ -2,7 +2,11 @@ import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
 
-const DB_PATH = path.join(process.cwd(), 'data', 'techformbuddy.db');
+// Vercel serverless has read-only filesystem except /tmp
+const IS_VERCEL = !!process.env.VERCEL;
+const DB_PATH = IS_VERCEL
+  ? path.join('/tmp', 'techformbuddy.db')
+  : path.join(process.cwd(), 'data', 'techformbuddy.db');
 
 // Singleton pattern for database connection
 let db: Database.Database | null = null;
