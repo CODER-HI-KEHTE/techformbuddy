@@ -1,0 +1,54 @@
+.cinema-chapter-nav {
+  position: fixed;
+  top: 50%;
+  right: max(20px, calc((100vw - 1440px) / 2));
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 0;
+  transform: translateY(-50%);
+}
+.cinema-chapter-rail {
+  position: absolute;
+  top: 11px;
+  bottom: 11px;
+  left: -9px;
+  width: 1px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--color-border) 72%, transparent);
+}
+.cinema-chapter-rail span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: top center;
+  background: var(--cherry-bright);
+  box-shadow: 0 0 9px var(--cherry-bright);
+}
+.cinema-chapter-nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 0;
+  color: var(--color-text-tertiary);
+  font-size: 9px;
+  letter-spacing: .07em;
+  text-decoration: none;
+  transition: opacity .16s ease, transform .16s ease;
+}
+.cinema-chapter-nav a:hover,
+.cinema-chapter-nav a.is-active { color: var(--color-text-primary); opacity: 1; }
+.cinema-chapter-number { color: var(--cherry-bright); font-size: 8px; font-weight: 850; }
+.cinema-chapter-title { opacity: 0; transform: translateX(4px); transition: opacity .16s ease, transform .16s ease; }
+.cinema-chapter-nav:hover .cinema-chapter-title,
+.cinema-chapter-nav a.is-active .cinema-chapter-title { opacity: 1; transform: translateX(0); }
+
+@media (max-width: 1000px), (pointer: coarse) {
+  .cinema-chapter-nav { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinema-chapter-nav a, .cinema-chapter-title { transition: none; }
+}

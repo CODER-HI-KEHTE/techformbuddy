@@ -1,0 +1,276 @@
+.tfb-floating-buddy-drag-bounds {
+  position: fixed;
+  inset: 8px;
+  z-index: -1;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ── FloatingBuddy: round bot-dot + expandable panel ────────────────── */
+
+/* Root wrapper — fixed, draggable */
+.tfb-floating-buddy {
+  position: fixed;
+  z-index: 2147483640;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  display: flex;
+  align-items: center;
+  cursor: grab;
+}
+
+.tfb-floating-buddy:active {
+  cursor: grabbing;
+}
+
+/* ── Compact dot ────────────────────────────────────────────────────── */
+.tfb-buddy-dot {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--cherry) 38%, var(--surface-dark)) 0%, var(--bg-dark) 80%);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--cherry) 50%, transparent),
+    0 8px 24px rgba(0, 0, 0, 0.45),
+    0 0 32px color-mix(in srgb, var(--cherry) 15%, transparent);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  outline: none;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.tfb-buddy-dot:focus-visible {
+  box-shadow:
+    0 0 0 3px var(--cherry-bright),
+    0 0 0 5px color-mix(in srgb, var(--cherry-bright) 40%, transparent),
+    0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.tfb-buddy-dot:hover {
+  box-shadow:
+    0 0 0 2.5px color-mix(in srgb, var(--cherry-bright) 70%, transparent),
+    0 10px 32px color-mix(in srgb, var(--cherry) 30%, transparent),
+    0 0 40px color-mix(in srgb, var(--cherry) 20%, transparent);
+}
+
+.tfb-buddy-dot:hover::after,
+.tfb-buddy-dot:focus-visible::after {
+  content: 'Hi! Main TechForm Buddy hoon';
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 13px);
+  width: max-content;
+  max-width: min(230px, calc(100vw - 24px));
+  padding: 8px 11px;
+  border: 1px solid color-mix(in srgb, var(--blush) 28%, transparent);
+  border-radius: 12px;
+  background: var(--surface-dark);
+  color: #fff5f6;
+  box-shadow: var(--shadow-md);
+  font: 600 12px/1.35 var(--font-family);
+  pointer-events: none;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tfb-buddy-dot::after {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .16s ease, transform .16s ease;
+}
+
+/* Bot face SVG */
+.tfb-buddy-face {
+  width: 52px;
+  height: 52px;
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.tfb-buddy-dot .mimmy-bot {
+  pointer-events: none;
+}
+
+.tfb-buddy-eyes {
+  transform-box: view-box;
+}
+
+/* ── Glow pulse ring ───────────────────────────────────────────────── */
+.tfb-buddy-glow-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--cherry-bright) 40%, transparent);
+  animation: tfb-glow-pulse 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes tfb-glow-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+    border-color: color-mix(in srgb, var(--cherry-bright) 40%, transparent);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+    border-color: color-mix(in srgb, var(--cherry-bright) 40%, transparent);
+  }
+}
+
+/* ── Autofill status green dot ─────────────────────────────────────── */
+.tfb-buddy-status {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 2.5px solid #0f172a;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  pointer-events: none;
+  animation: none;
+}
+
+/* ── Listening ring ────────────────────────────────────────────────── */
+.tfb-buddy-listening-ring {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(239, 68, 68, 0.7);
+  animation: tfb-listen-pulse 1.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes tfb-listen-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.3;
+  }
+}
+
+/* Speaking state on the dot */
+.is-speaking .tfb-buddy-dot {
+  box-shadow:
+    0 0 0 2.5px rgba(220, 38, 38, 0.6),
+    0 8px 24px rgba(220, 38, 38, 0.25),
+    0 0 32px rgba(220, 38, 38, 0.15);
+}
+
+.is-listening .tfb-buddy-dot {
+  box-shadow:
+    0 0 0 2.5px rgba(239, 68, 68, 0.6),
+    0 8px 24px rgba(239, 68, 68, 0.2),
+    0 0 32px rgba(239, 68, 68, 0.12);
+}
+
+/* ── Expanded panel ────────────────────────────────────────────────── */
+.tfb-floating-buddy-expanded {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface-dark);
+  border: 1.5px solid color-mix(in srgb, var(--cherry) 64%, var(--color-border));
+  border-radius: 9999px;
+  padding: 8px 14px;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.35),
+    0 0 24px color-mix(in srgb, var(--cherry) 12%, transparent);
+  color: #ffffff;
+  font-family: inherit;
+  min-height: 48px;
+  max-width: min(520px, calc(100vw - 24px));
+}
+
+.tfb-floating-buddy-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Collapse & hide buttons inside expanded */
+.tfb-buddy-control {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.tfb-buddy-control:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.tfb-buddy-collapse {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.tfb-buddy-hide {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* ── prefers-reduced-motion ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .tfb-buddy-glow-ring,
+  .tfb-buddy-listening-ring,
+  .tfb-buddy-status {
+    animation: none !important;
+  }
+  .tfb-buddy-dot {
+    transition: none !important;
+  }
+}
+
+/* ── Mobile tweaks ─────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .tfb-buddy-dot {
+    width: 64px;
+    height: 64px;
+  }
+
+  .tfb-buddy-face {
+    width: 52px;
+    height: 52px;
+  }
+
+  .tfb-floating-buddy-expanded {
+    padding: 6px 10px;
+    gap: 4px;
+    max-width: calc(100vw - 16px);
+  }
+}
+
+@media (max-width: 768px) {
+  .tfb-floating-buddy.is-compact {
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .tfb-floating-buddy.is-expanded:not(.has-saved-position) {
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "manifest_version": 3,
+  "name": "TechForm Buddy",
+  "version": "1.0.0",
+  "description": "Accessible, privacy-first AI form assistance system for desktop and mobile web forms.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz50TS1dIDDLUxg3/U6Swppp8NeE8Nt5Z1IXDo+QnGuL7kaZmSK5vfLqdiDYgDfnLRlU70UUG4VWOYlORIjSXAAf4mryGLuVHBhUqezsKiEv3p236v1KJqDUGSZX/ZTEqQjqVgFmSEDZG5fmQnxhs1oxXW02NwAMKmwsnfVozw0uf+Gbf0/7OvYib6Ov4oXo6ShL4aIJaGrpxQDm5GPdXh97xAA5GP2m2H29wEtJ4cjRHww+NQRDGVfLj0F/+7cRdTBbFcP7yLAwKR0cMc1WqIIEwb4aU8FJpBpizfcoD3Ml5nJ4DdTaIrbjzGMFcfi/9le+Rb0Cs3V9PKjL5pax82QIDAQAB",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tts",
+    "contextMenus",
+    "downloads"
+  ],
+  "commands": {
+    "toggle-buddy": {
+      "suggested_key": {
+        "default": "Alt+B"
+      },
+      "description": "Show or Hide TechForm Buddy"
+    }
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "TechForm Buddy Guide"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://localhost:3000/*",
+        "https://*.techformbuddy.com/*"
+      ],
+      "js": ["content-app.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://*.gov.in/*",
+        "*://gov.in/*",
+        "*://*.nic.in/*",
+        "*://nic.in/*",
+        "*://*.jansamarth.in/*",
+        "*://jansamarth.in/*",
+        "*://*.nta.ac.in/*",
+        "*://nta.ac.in/*",
+        "*://*.mponline.gov.in/*",
+        "*://mponline.gov.in/*",
+        "*://*.swayam.gov.in/*",
+        "*://swayam.gov.in/*",
+        "http://localhost:*/*",
+        "http://127.0.0.1:*/*",
+        "https://localhost:*/*",
+        "https://127.0.0.1:*/*"
+      ],
+      "exclude_matches": [
+        "http://localhost:3000/*",
+        "http://127.0.0.1:3000/*",
+        "https://*.techformbuddy.com/*"
+      ],
+      "js": ["form-core.iife.js", "content-portal.js"],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ],
+  "externally_connectable": {
+    "matches": [
+      "http://localhost:3000/*",
+      "https://*.techformbuddy.com/*"
+    ]
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["form-core.iife.js", "content-portal.js", "popup.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

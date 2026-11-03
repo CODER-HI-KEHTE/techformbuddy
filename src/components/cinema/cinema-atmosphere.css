@@ -1,0 +1,64 @@
+.cinema-film-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9800;
+  opacity: .045;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  animation: cinema-grain-offset .27s steps(2, end) infinite;
+  contain: strict;
+}
+.cinema-film-grain.is-paused { animation-play-state: paused; }
+
+@keyframes cinema-grain-offset {
+  0% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(-1%,1%,0); }
+  100% { transform: translate3d(1%,-1%,0); }
+}
+
+.cinema-spotlight {
+  position: fixed;
+  top: -240px;
+  left: -240px;
+  z-index: 2;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle at center, color-mix(in srgb, var(--cherry-bright) 16%, transparent), transparent 76%);
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.cinema-cursor {
+  position: fixed;
+  top: -12px;
+  left: -12px;
+  z-index: 12000;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--cherry-bright) 78%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--cherry) 16%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--cherry-bright) 45%, transparent);
+  pointer-events: none;
+  opacity: 0;
+  transform-origin: center;
+  transition: opacity .16s ease, width .18s ease, height .18s ease, background-color .18s ease;
+}
+.cinema-cursor.is-visible { opacity: 1; }
+.cinema-cursor.has-label { width: 74px; height: 74px; background: color-mix(in srgb, var(--cherry) 86%, var(--bg-dark)); }
+.cinema-cursor-core { width: 4px; height: 4px; border-radius: 50%; background: #fff5f6; box-shadow: 0 0 8px #fff; }
+.cinema-cursor-label { position: absolute; color: #fff5f6; font-size: 10px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; opacity: 0; }
+.cinema-cursor.has-label .cinema-cursor-core { opacity: 0; }
+.cinema-cursor.has-label .cinema-cursor-label { opacity: 1; }
+
+@media (max-width: 899px), (pointer: coarse) {
+  .cinema-film-grain, .cinema-spotlight, .cinema-cursor { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinema-film-grain, .cinema-spotlight, .cinema-cursor { display: none; }
+}

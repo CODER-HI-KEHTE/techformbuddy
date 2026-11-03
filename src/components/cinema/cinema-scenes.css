@@ -1,0 +1,146 @@
+.cinema-depth-parallax {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.cinema-depth-layer { position: absolute; border-radius: 50%; will-change: transform; }
+.cinema-depth-far { top: 4vh; left: 8vw; width: 34vw; height: 34vw; opacity: .14; filter: blur(18px); background: radial-gradient(circle, var(--cherry-deep), transparent 70%); }
+.cinema-depth-middle { top: 33vh; right: 7vw; width: 25vw; height: 25vw; opacity: .12; filter: blur(7px); background: radial-gradient(circle, var(--cherry-bright), transparent 70%); }
+.cinema-depth-near { top: 65vh; left: 35vw; width: 21vw; height: 21vw; opacity: .09; background: radial-gradient(circle, var(--blush), transparent 68%); }
+
+.kinetic-heading { overflow: visible; }
+.kinetic-word-clip { display: inline-block; overflow: clip; vertical-align: bottom; }
+.kinetic-word { display: inline-block; will-change: transform, opacity; }
+
+.cinema-journey {
+  position: relative;
+  margin: clamp(54px, 8vw, 100px) calc((min(100vw, 1200px) - 100vw) / 2) clamp(60px, 9vw, 110px);
+  overflow: hidden;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--cherry-deep) 10%, transparent) 20% 80%, transparent);
+}
+.cinema-journey-pin {
+  position: relative;
+  height: min(74vh, 720px);
+  min-height: 570px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(26px, 5vw, 64px) max(6vw, calc((100vw - 1200px) / 2));
+  overflow: hidden;
+}
+.cinema-journey-heading { display: flex; align-items: baseline; gap: 18px; margin-bottom: 32px; }
+.cinema-journey-heading h2 { margin: 0; font-size: clamp(1.7rem, 3.8vw, 3rem); letter-spacing: -.05em; }
+.cinema-journey-heading .landing-kicker { flex: 0 0 auto; }
+.cinema-journey-hint { margin-left: auto; color: var(--color-text-tertiary); font-size: .73rem; white-space: nowrap; }
+.cinema-journey-hint b { margin-left: 6px; color: var(--cherry-bright); }
+.cinema-journey-viewport { width: 100%; overflow: visible; }
+.cinema-journey-track { display: flex; gap: clamp(16px, 2.2vw, 28px); width: max-content; will-change: transform; }
+.cinema-journey-card {
+  position: relative;
+  flex: 0 0 clamp(300px, 31vw, 405px);
+  min-height: clamp(330px, 43vh, 430px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  padding: clamp(24px, 3vw, 38px);
+  border: 1px solid color-mix(in srgb, var(--blush) 23%, var(--color-border));
+  border-radius: 26px;
+  background: linear-gradient(150deg, color-mix(in srgb, var(--surface-dark) 92%, var(--cherry-deep)), var(--bg-dark));
+  box-shadow: var(--shadow-lg), 0 0 50px color-mix(in srgb, var(--cherry) 9%, transparent);
+}
+.cinema-journey-card-top { width: 100%; display: flex; justify-content: space-between; color: var(--blush); font-size: .63rem; font-weight: 800; letter-spacing: .14em; }
+.cinema-journey-card-top i { width: 7px; height: 7px; border-radius: 50%; background: var(--cherry-bright); box-shadow: 0 0 12px var(--cherry-bright); }
+.cinema-journey-icon { width: 62px; height: 62px; display: grid; place-items: center; margin: auto 0 23px; border: 1px solid color-mix(in srgb, var(--cherry-bright) 40%, transparent); border-radius: 20px; background: color-mix(in srgb, var(--cherry) 15%, transparent); color: var(--blush); font-size: 1.65rem; font-weight: 750; }
+.cinema-journey-kicker { color: var(--color-text-tertiary); font-size: .6rem; font-weight: 800; letter-spacing: .15em; }
+.cinema-journey-card h3 { margin: 8px 0; color: var(--color-text-primary); font-size: clamp(1.8rem, 3vw, 2.7rem); letter-spacing: -.05em; }
+.cinema-journey-card p { max-width: 290px; color: var(--color-text-secondary); line-height: 1.65; }
+.cinema-journey-line { width: 100%; height: 3px; margin-top: auto; overflow: hidden; border-radius: 9px; background: color-mix(in srgb, var(--color-border) 52%, transparent); }
+.cinema-journey-line i { display: block; width: 100%; height: 100%; transform-origin: left center; background: linear-gradient(90deg, var(--cherry-bright), var(--cherry), var(--cherry-deep)); }
+.cinema-journey-mimmy { position: absolute; right: 22px; bottom: 42px; filter: drop-shadow(0 10px 24px color-mix(in srgb, var(--cherry) 22%, transparent)); }
+
+.cinema-credits {
+  position: relative;
+  height: 145vh;
+  margin: clamp(40px, 7vw, 84px) 0 25px;
+  overflow: clip;
+  border-top: 1px solid color-mix(in srgb, var(--cherry) 24%, var(--color-border));
+  border-bottom: 1px solid color-mix(in srgb, var(--cherry) 24%, var(--color-border));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-dark) 94%, var(--cherry-deep)), var(--bg-dark));
+  color: #fff5f6;
+}
+.cinema-credits-sticky { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; overflow: hidden; perspective: 900px; }
+.cinema-credits-roll { width: min(90vw, 760px); display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; will-change: transform; }
+.cinema-credits-roll h2 { margin: 0 0 25px; color: #fff5f6; font-size: clamp(2.4rem, 7vw, 5.2rem); letter-spacing: .17em; text-shadow: 0 0 36px color-mix(in srgb, var(--cherry) 38%, transparent); }
+.cinema-credits-roll p { margin: 18px 0 0; color: #e6b6c0; font-size: .73rem; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; }
+.cinema-credits-roll strong { color: #fff5f6; font-size: clamp(1.05rem, 2.3vw, 1.65rem); letter-spacing: .11em; }
+.cinema-credits-roll .cinema-credits-team { color: #f0c3ce; font-size: .9rem; font-weight: 500; }
+.cinema-credits-roll > span { color: #d3aab3; font-size: .9rem; letter-spacing: .12em; }
+.cinema-credits-kicker { color: var(--blush) !important; font-size: .7rem !important; font-weight: 700; letter-spacing: .18em !important; }
+.cinema-credits-mimmy { margin: 8px 0; }
+.cinema-credits-the-end { margin: 13px 0 8px; color: var(--blush) !important; font-size: 1rem !important; font-weight: 700; }
+.cinema-replay { border-color: color-mix(in srgb, var(--blush) 38%, transparent); color: #fff5f6; }
+.footer-celebration-mimmy { position: absolute; right: clamp(12px, 5vw, 60px); bottom: clamp(12px, 3vw, 34px); opacity: .94; }
+
+/* Scene color grades quietly shift from cherry, through warm blush, to dark credits. */
+.landing > .features { background-color: color-mix(in srgb, var(--color-bg-secondary) 94%, var(--cherry-deep)); }
+.landing > #metrics { background-color: color-mix(in srgb, var(--color-bg) 92%, var(--cherry-deep)); }
+.landing > .landing-security { background-color: color-mix(in srgb, var(--color-bg-secondary) 93%, var(--blush)); }
+.landing > .landing-footer { background-color: var(--bg-dark); }
+
+.cinema-journey-card:hover { border-color: color-mix(in srgb, var(--cherry-bright) 48%, var(--color-border)); }
+.cinema-journey-card:hover .cinema-journey-icon { transform: translateY(-4px) scale(1.04); }
+.cinema-journey-icon { transition: transform .24s ease; }
+
+/* Bento composition: varied card footprints on desktop, with touch-safe stacking. */
+.features-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); perspective: 1100px; }
+.features-grid > .feature-card { min-height: 225px; }
+.features-grid > .feature-card:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+.features-grid > .feature-card:nth-child(4) { grid-column: span 2; }
+.features-grid > .feature-card:nth-child(6) { grid-column: span 2; }
+.features-grid > .feature-card:nth-child(8) { grid-column: span 2; }
+.features-grid .feature-icon svg { stroke-dasharray: 80; stroke-dashoffset: 0; transition: stroke-dashoffset .45s ease, transform .35s ease; }
+.features-grid .feature-card:hover .feature-icon svg { stroke-dashoffset: 80; transform: scale(1.06); }
+
+/* Distinct low-intensity color grades mark each chapter. */
+.landing > .features { background-image: radial-gradient(ellipse at 82% 18%, color-mix(in srgb, var(--cherry) 7%, transparent), transparent 42rem); }
+.landing > #metrics { position: relative; z-index: 1; background: linear-gradient(180deg, color-mix(in srgb, var(--surface-dark) 38%, transparent), transparent); }
+.landing > .landing-security { background-image: radial-gradient(ellipse at 18% 55%, color-mix(in srgb, var(--blush) 8%, transparent), transparent 44rem); }
+.landing > .landing-footer { background-image: linear-gradient(180deg, transparent, color-mix(in srgb, var(--cherry-deep) 12%, transparent)); }
+
+.language-marquee-viewport:hover .language-marquee-track { animation-play-state: paused; }
+
+@media (max-width: 1000px) {
+  .cinema-journey-pin { padding-right: 28px; padding-left: 28px; }
+}
+
+@media (max-width: 859px), (pointer: coarse) {
+  .cinema-depth-parallax { display: none; }
+  .cinema-journey { margin-right: -24px; margin-left: -24px; padding: 28px 0; }
+  .cinema-journey-pin { height: auto; min-height: 0; padding: 20px 24px; overflow: visible; }
+  .cinema-journey-heading { align-items: flex-start; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+  .cinema-journey-hint { display: none; }
+  .cinema-journey-viewport { overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+  .cinema-journey-track { transform: none !important; padding-bottom: 10px; }
+  .cinema-journey-card { flex-basis: min(78vw, 340px); min-height: 320px; scroll-snap-align: start; }
+  .features-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .features-grid > .feature-card:nth-child(n) { grid-column: span 1; grid-row: auto; }
+  .features-grid > .feature-card:nth-child(1), .features-grid > .feature-card:nth-child(4) { grid-column: span 2; }
+  .cinema-credits { height: auto; min-height: 100vh; }
+  .cinema-credits-sticky { position: relative; height: auto; min-height: 100vh; padding: 20vh 0; }
+  .cinema-credits-roll { transform: none !important; }
+  .footer-celebration-mimmy { width: 58px !important; height: 58px !important; right: 12px; bottom: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinema-depth-parallax { display: none; }
+  .cinema-journey-track { transform: none !important; }
+  .features-grid .feature-icon svg { transition: none; }
+  .cinema-credits-roll { transform: none !important; }
+  .cinema-credits { height: auto; min-height: 100vh; }
+  .cinema-credits-sticky { position: relative; height: auto; min-height: 100vh; padding: 15vh 0; }
+  .cinema-journey-icon { transition: none; }
+  .language-marquee-viewport:hover .language-marquee-track { animation-play-state: running; }
+}

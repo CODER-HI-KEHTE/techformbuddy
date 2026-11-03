@@ -1,0 +1,9 @@
+{
+  "name": "@techformbuddy/extension",
+  "version": "1.0.0",
+  "description": "TechForm Buddy Chrome Extension (Manifest V3)",
+  "private": true,
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

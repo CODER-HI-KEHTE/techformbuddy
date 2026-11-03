@@ -1,0 +1,51 @@
+.extension-connect-page {
+  min-height: 100vh;
+  padding: clamp(24px, 6vw, 72px);
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse at 18% 20%, color-mix(in srgb, var(--cherry) 15%, transparent), transparent 30rem),
+    radial-gradient(ellipse at 85% 80%, color-mix(in srgb, var(--blush) 10%, transparent), transparent 26rem),
+    var(--color-bg) !important;
+}
+
+.extension-connect-main {
+  width: min(100%, 680px);
+  margin: 0 auto;
+}
+
+.extension-connect-card {
+  padding: clamp(24px, 5vw, 48px) !important;
+  border: 1px solid color-mix(in srgb, var(--color-accent-muted) 24%, var(--color-border)) !important;
+  border-radius: 30px !important;
+  background: color-mix(in srgb, var(--color-bg-secondary) 82%, transparent) !important;
+  box-shadow: var(--shadow-lg), 0 0 65px color-mix(in srgb, var(--cherry) 10%, transparent) !important;
+  backdrop-filter: blur(20px);
+}
+
+.extension-connect-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.extension-connect-heading .buddy-bot { margin: -12px 0 -2px; }
+.extension-connect-heading h1 { margin: 10px 0 7px !important; color: var(--color-text-primary) !important; font-size: clamp(1.5rem, 5vw, 2rem) !important; }
+.extension-connect-heading p { color: var(--color-text-secondary) !important; max-width: 470px; }
+
+.extension-detection-status {
+  background: color-mix(in srgb, var(--color-bg-tertiary) 75%, transparent) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 16px !important;
+}
+
+.extension-detection-status strong,
+.extension-detection-status p { color: var(--color-text-secondary) !important; }
+.extension-connect-error { background: var(--color-error-light) !important; border-color: color-mix(in srgb, var(--color-error) 40%, var(--color-border)) !important; color: var(--color-error) !important; }
+
+@media (max-width: 600px) {
+  .extension-connect-page { padding: 18px; }
+  .extension-connect-card { padding: 24px 18px !important; }
+}

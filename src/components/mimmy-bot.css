@@ -1,0 +1,39 @@
+.mimmy-bot {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mimmy-bot:focus-visible {
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--cherry) 60%, transparent);
+}
+
+.mimmy-bot > svg {
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.mimmy-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  color: #e9a93c;
+  font-size: clamp(13px, 11%, 20px);
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mimmy-bot { transition: none; }
+}

@@ -1,0 +1,23 @@
+.buddy-bot {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 10px 24px color-mix(in srgb, var(--cherry) 19%, transparent));
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.buddy-bot svg { display: block; overflow: visible; }
+.buddy-bot-eyes { transform-box: view-box; }
+
+.sidebar-buddy-bot {
+  width: 26px !important;
+  height: 26px !important;
+  margin: -3px;
+  filter: drop-shadow(0 2px 6px color-mix(in srgb, var(--cherry) 22%, transparent));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .buddy-bot { animation: none !important; }
+}

@@ -1,0 +1,27 @@
+.cinema-section-blend-anchor {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.cinema-section-background-blend {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 12% 72%, color-mix(in srgb, var(--cherry) 28%, transparent), transparent 55%),
+    linear-gradient(180deg, color-mix(in srgb, var(--cherry-deep) 10%, transparent), color-mix(in srgb, var(--surface-dark) 25%, transparent));
+  will-change: opacity;
+}
+
+@media (max-width: 700px) {
+  .cinema-section-background-blend { background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--cherry-deep) 20%, transparent)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinema-section-background-blend { display: none; }
+}

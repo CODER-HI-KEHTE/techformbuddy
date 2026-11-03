@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TechForm Buddy</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="brand">
+        <span class="brand-icon">🇮🇳</span>
+        <h1 class="brand-title">TechForm Buddy</h1>
+      </div>
+      <div class="connection-badge" id="conn-badge">
+        <span class="status-dot" id="status-dot"></span>
+        <span class="status-text" id="status-text">Checking...</span>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="popup-body">
+      <!-- Disconnected Warning -->
+      <div class="alert-box" id="disconnected-alert" style="display: none;">
+        <p>Extension is not paired with your account.</p>
+        <button class="btn btn-secondary btn-sm" id="btn-pair">Pair Account</button>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="control-group">
+        <label for="lang-select" class="control-label">Guidance Language / भाषा</label>
+        <select id="lang-select" class="form-select">
+          <option value="en">English (India)</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="ta">தமிழ் (Tamil)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+          <option value="bn">বাংলা (Bengali)</option>
+          <option value="mr">मराठी (Marathi)</option>
+          <option value="gu">ગુજરાતી (Gujarati)</option>
+          <option value="kn">ಕನ್ನಡ (Kannada)</option>
+          <option value="ml">മലയാളം (Malayalam)</option>
+          <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+          <option value="ur">اردو (Urdu)</option>
+        </select>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button id="btn-start" class="btn btn-primary btn-block">
+          <span id="btn-start-text">🚀 Start on this page</span>
+          <span id="btn-start-spinner" class="spinner" style="display: none;"></span>
+        </button>
+        <button id="btn-restore-buddy" class="btn btn-secondary btn-block" style="margin-top: 8px;">
+          👁️ Show / Restore Buddy
+        </button>
+        <button id="btn-show-everywhere" class="btn btn-outline btn-block" style="margin-top: 6px; font-size: 11px;">
+          🌐 Show Everywhere (Reset Hidden Sites)
+        </button>
+        <button id="btn-disconnect" class="btn btn-outline btn-block" style="display: none;">
+          Disconnect & Clear Data
+        </button>
+      </div>
+
+      <!-- Status Feedback message -->
+      <div id="status-msg" class="status-msg" style="display: none;"></div>
+    </main>
+
+    <!-- Security & Privacy Footer -->
+    <footer class="popup-footer">
+      <p class="security-note">
+        🛡️ <strong>Zero-Submit & Privacy Guarantee:</strong> The extension never stores passwords, OTPs, or bank numbers. Documents and profile data are stored only with your consent, encrypted at rest, in your own account, and TechForm Buddy never auto-submits or clicks pay.
+      </p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

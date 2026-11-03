@@ -1,0 +1,117 @@
+/* Cherry transition/entrance details for the landing page. */
+.landing-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, var(--bg-dark), var(--surface-dark));
+  pointer-events: none;
+}
+
+.landing-header .landing-brand {
+  animation: landing-logo-intro .55s ease-out both;
+}
+
+@keyframes landing-logo-intro {
+  from { opacity: 0; transform: translate3d(0, -8px, 0) scale(.97); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+.cursor-cherry-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border: 1px solid color-mix(in srgb, var(--cherry-bright) 75%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--cherry-bright) 12%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--cherry-bright) 45%, transparent), inset 0 0 10px color-mix(in srgb, var(--cherry) 28%, transparent);
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition: opacity .16s ease;
+}
+
+.language-marquee-track + .language-marquee-track { margin-top: 12px; }
+.language-marquee-track-2 { animation-direction: reverse; animation-duration: 39s; }
+
+.footer-celebration {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: clamp(32px, 6vw, 66px);
+  padding: clamp(38px, 7vw, 74px) 24px;
+  border: 1px solid color-mix(in srgb, var(--cherry) 26%, var(--color-border));
+  border-radius: 30px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--cherry) 14%, var(--color-bg-secondary)), color-mix(in srgb, var(--blush) 11%, var(--color-bg-secondary)));
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.footer-celebration-glow {
+  position: absolute;
+  inset: -35% 20%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, color-mix(in srgb, var(--cherry-bright) 18%, transparent), transparent 70%);
+  pointer-events: none;
+}
+
+.footer-celebration h2 { max-width: 720px; font-size: clamp(2rem, 5vw, 3.8rem); letter-spacing: -.05em; }
+.footer-celebration-copy { max-width: 560px; }
+.footer-celebration-button { margin-top: 7px; }
+.footer-celebration-footnote { color: var(--color-text-tertiary); font-size: .73rem; }
+.footer-confetti { position: absolute; inset: 42% 0 auto; z-index: -1; height: 1px; pointer-events: none; }
+.footer-confetti i { position: absolute; top: 0; left: 50%; width: 7px; height: 10px; border-radius: 2px; will-change: transform, opacity; }
+
+@media (hover: hover) and (pointer: fine) {
+  .landing,
+  .landing *,
+  .landing a,
+  .landing button { cursor: none; }
+}
+
+@media (max-width: 700px), (pointer: coarse) {
+  .cursor-cherry-ring { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-header .landing-brand { animation: none; }
+  .language-marquee-track-2 { animation: none !important; }
+}
+
+/* New CTA feedback layers over the existing magnetic hover/press behavior. */
+.magnetic-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.magnetic-cta::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: -30%;
+  bottom: -30%;
+  left: -38%;
+  width: 28%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.52), transparent);
+  opacity: 0;
+  transform: translateX(-150%) skewX(-18deg);
+  pointer-events: none;
+  transition: transform .48s cubic-bezier(.2,.8,.2,1), opacity .18s ease;
+}
+.magnetic-cta:hover::before,
+.magnetic-cta:focus-visible::before { opacity: .8; transform: translateX(560%) skewX(-18deg); }
+.magnetic-cta:active::before { opacity: 1; transform: translateX(560%) skewX(-18deg); transition-duration: .12s; }
+.magnetic-cta > svg { position: relative; z-index: 1; transition: transform .2s ease; }
+.magnetic-cta:hover > svg,
+.magnetic-cta:focus-visible > svg { transform: translateX(3px); }
+.magnetic-cta:active > svg { transform: translateX(5px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .magnetic-cta::before,
+  .magnetic-cta > svg { transition: none; }
+}
